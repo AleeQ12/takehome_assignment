@@ -1,0 +1,45 @@
+# Codes are stored normalized (uppercase, trimmed); a database check constraint enforces this.
+
+ten_percent:
+  code: TENOFF
+  discount_type: percentage
+  discount_value: 10
+  active: true
+
+five_off:
+  code: FIVEOFF
+  discount_type: fixed
+  discount_value: 5.00
+  active: true
+
+full:
+  code: FULLOFF
+  discount_type: percentage
+  discount_value: 100
+  active: true
+
+big_fixed:
+  code: BIGFIXED
+  discount_type: fixed
+  discount_value: 50.00
+  active: true
+
+expired:
+  code: EXPIRED
+  discount_type: percentage
+  discount_value: 20
+  active: true
+  expires_at: <%= 1.day.ago.utc.to_fs(:db) %>
+
+future:
+  code: FUTURE
+  discount_type: percentage
+  discount_value: 10
+  active: true
+  expires_at: <%= 1.day.from_now.utc.to_fs(:db) %>
+
+inactive:
+  code: INACTIVE
+  discount_type: percentage
+  discount_value: 15
+  active: false
